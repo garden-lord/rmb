@@ -72,10 +72,6 @@
         cursor: pointer;
       }
 
-      button {
-        cursor: pointer;
-      }
-
       .vote {
         width: 90%;
         background: rgb(0, 255, 102);
@@ -90,7 +86,8 @@
         margin-bottom: 20px;
       }
 
-      .vote:hover {
+      .vote-enabled:hover {
+        cursor: pointer;
         -webkit-box-shadow: -4px 3px 16px 0px rgba(0, 0, 0, 0.75);
         -moz-box-shadow: -4px 3px 16px 0px rgba(0, 0, 0, 0.75);
         box-shadow: -4px 3px 16px 0px rgba(0, 0, 0, 0.75);
@@ -112,7 +109,7 @@
           <img hidden src="images/dog1-highlight.png" />
           <audio></audio>
         </div>
-        <button class="vote">Choose</button>
+        <button disabled class="vote">Choose</button>
       </div>
       <div class="meow" id="b">
         <h2>Bark B</h2>
@@ -121,7 +118,7 @@
           <img hidden src="images/dog2-highlight.png" />
           <audio></audio>
         </div>
-        <button class="vote">Choose</button>
+        <button disabled class="vote">Choose</button>
       </div>
       <!-- <div class="meow" id="b">
         <h2>meow B</h2>

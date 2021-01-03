@@ -53,12 +53,19 @@ function setupButton(button, file) {
     dogDiv.children[1].hidden = true;
   });
 
+  function enableButton() {
+    button.querySelector(".vote").disabled = false;
+    button.querySelector(".vote").classList.add("vote-enabled");
+  }
+
   // Play audio when dog is clicked
   dogDiv.children[0].addEventListener("mouseup", () => {
     audio.play();
+    enableButton();
   });
   dogDiv.children[1].addEventListener("mouseup", () => {
     audio.play();
+    enableButton();
   });
 
   button.querySelector(".vote").addEventListener("click", () => {
