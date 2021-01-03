@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Rate My Bark</title>
+    <link rel="icon" href="favicon.ico" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Staatliches&display=swap"
+      rel="stylesheet"
+    />
+    <script src="barks.js"></script>
+    <script src="script.js"></script>
+    <style>
+      h1 {
+        font-family: "Staatliches", cursive;
+        text-align: center;
+        font-size: 10vw;
+      }
+
+      body {
+        font-family: "Staatliches", cursive;
+      }
+
+      button {
+        font-family: "Staatliches", cursive;
+      }
+
+      @media screen and (min-width: 1200px) {
+        h1 {
+          font-size: 120px;
+        }
+      }
+
+      .meow {
+        background: rgb(0, 255, 163);
+        background: linear-gradient(
+          66deg,
+          rgba(0, 255, 163, 1) 0%,
+          rgba(30, 241, 255, 1) 100%
+        );
+        border-radius: 5px;
+        padding: 10px;
+        margin: 10px;
+        text-align: center;
+      }
+
+      .row {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        width: 100%;
+      }
+
+      .column {
+        display: flex;
+        flex-direction: column;
+        flex-basis: 100%;
+        flex: 1;
+      }
+
+      img {
+        height: 40%;
+        width: 40%;
+      }
+
+      .vote {
+        width: 90%;
+        background: rgb(0, 255, 102);
+        background: radial-gradient(
+          circle,
+          rgba(0, 255, 102, 1) 0%,
+          rgba(142, 255, 72, 1) 100%
+        );
+        border: 2px solid black;
+        border-radius: 60px;
+        height: 5em;
+      }
+
+      .vote:hover {
+        -webkit-box-shadow: -4px 3px 16px 0px rgba(0, 0, 0, 0.75);
+        -moz-box-shadow: -4px 3px 16px 0px rgba(0, 0, 0, 0.75);
+        box-shadow: -4px 3px 16px 0px rgba(0, 0, 0, 0.75);
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- <object data="dog1.svg" type="image/svg+xml"></object> -->
+    <h1>Rate My Bark</h1>
+    <p style="text-align: center">
+      Click the dog to listen, choose the better bark
+    </p>
+    <div class="row">
+      <div class="meow" id="a">
+        <h2>Bark A</h2>
+        <div class="dog-image">
+          <img src="images/dog1.png" />
+          <img hidden src="images/dog1-highlight.png" />
+          <audio></audio>
+        </div>
+        <button class="vote">Choose</button>
+      </div>
+      <div class="meow" id="b">
+        <h2>Bark B</h2>
+        <div class="dog-image">
+          <img src="images/dog2.png" />
+          <img hidden src="images/dog2-highlight.png" />
+          <audio></audio>
+        </div>
+        <button class="vote">Choose</button>
+      </div>
+      <!-- <div class="meow" id="b">
+        <h2>meow B</h2>
+        <img src="images/dog2.png" />
+        <button class="listen"></button><button class="vote">Choose</button
+        ><audio></audio>
+      </div> -->
+    </div>
+  </body>
+</html>
