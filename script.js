@@ -38,7 +38,10 @@ function get2Barks() {
 }
 let log = console.log;
 
-function setupButton(button, file) {
+function setupButton(button, bark) {
+  let file = bark[1];
+  let hash = bark[0];
+  button.querySelector("h2").innerText += " " + hash;
   const audio = button.querySelector("audio");
   audio.appendChild(fromHtml(`<source src="barks/${file}" type="audio/wav">`));
 
