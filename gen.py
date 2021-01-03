@@ -25,12 +25,15 @@ for b in barks:
     dog = dogs[hash % len(dogs)]
     highlight = dog.replace(".png", "-highlight.png")
 
+    left = hash % 2 == 0
+
     out += f"""
     {{
         img: "images/{dog}",
         highlight: "images/{highlight}",
         name: "{adjective} {noun}",
         file: "{b}",
+        left: {'true' if left else 'false'},
     }},"""
 
 out += "];\n"

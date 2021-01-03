@@ -49,6 +49,12 @@ function setupButton(button, bark) {
   let dogDiv = button.querySelector(".dog-image");
   dogDiv.children[0].src = bark.img;
   dogDiv.children[1].src = bark.highlight;
+
+  if (bark.left) {
+    dogDiv.children[0].style = "transform: scaleX(-1);";
+    dogDiv.children[1].style = "transform: scaleX(-1);";
+  }
+
   dogDiv.children[0].addEventListener("mouseenter", () => {
     dogDiv.children[1].hidden = false;
     dogDiv.children[0].hidden = true;
