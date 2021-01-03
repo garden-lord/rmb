@@ -1,7 +1,12 @@
 import os
 import hashlib
+import re
 
 barks = os.listdir('barks')
+
+dogs = os.listdir('images')
+dogs = [x for x in dogs if re.search("dog[0-9]+\.png", x)]
+print(dogs)
 
 out = "const barks = [\n"
 
@@ -17,8 +22,16 @@ for b in barks:
     adjective = adjectives[hash % len(adjectives)].strip()
     noun = nouns[hash % len(nouns)].strip()
     print(adjective, noun)
+    dog = dogs[hash % len(dogs)]
+    highlight = dog.replace(".png", "-highlight.png")
 
-    out += f"\t[\"{adjective} {noun}\", \"{b}\"],\n"
+    out += f"""
+    {{
+        img: "images/{dog}",
+        highlight: "images/{highlight}",
+        name: "{adjective} {noun}",
+        file: "{b}",
+    }},"""
 
 out += "];\n"
 

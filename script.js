@@ -39,14 +39,16 @@ function get2Barks() {
 let log = console.log;
 
 function setupButton(button, bark) {
-  let file = bark[1];
-  let hash = bark[0];
-  button.querySelector("h2").innerText += " " + hash;
+  button.querySelector("h2").innerText = bark.name + " bark";
   const audio = button.querySelector("audio");
-  audio.appendChild(fromHtml(`<source src="barks/${file}" type="audio/wav">`));
+  audio.appendChild(
+    fromHtml(`<source src="barks/${bark.file}" type="audio/wav">`)
+  );
 
   // Add dog highlight
   let dogDiv = button.querySelector(".dog-image");
+  dogDiv.children[0].src = bark.img;
+  dogDiv.children[1].src = bark.highlight;
   dogDiv.children[0].addEventListener("mouseenter", () => {
     dogDiv.children[1].hidden = false;
     dogDiv.children[0].hidden = true;
@@ -72,8 +74,8 @@ function setupButton(button, bark) {
   });
 
   button.querySelector(".vote").addEventListener("click", () => {
-    console.log(`Voting for ${file}`);
-    vote(file);
+    console.log(`Voting for ${bark.file}`);
+    vote(bark.file);
   });
 }
 
