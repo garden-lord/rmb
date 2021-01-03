@@ -1,6 +1,6 @@
 const DB_HOST = window.location.href.startsWith("http://localhost")
   ? "http://localhost:5000"
-  : "http://ratemybark1.herokuapp.com";
+  : "https://ratemybark1.herokuapp.com";
 
 function choose(items) {
   return items[Math.floor(Math.random() * items.length)];
