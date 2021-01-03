@@ -5,13 +5,20 @@ barks = os.listdir('barks')
 
 out = "const barks = [\n"
 
+adjectives = open("english-adjectives.txt", "r").readlines()
+nouns = open("english-nouns.txt", "r").readlines()
+
+
 for b in barks:
     m = hashlib.sha256()
     the_bytes = open(f"barks/{b}", "rb").read()
     m.update(the_bytes)
-    hash = m.hexdigest()[0:3].upper()
+    hash = int.from_bytes(m.digest(), 'big', signed=False)
+    adjective = adjectives[hash % len(adjectives)].strip()
+    noun = nouns[hash % len(nouns)].strip()
+    print(adjective, noun)
 
-    out += f"\t[\"{hash}\", \"{b}\"],\n"
+    out += f"\t[\"{adjective} {noun}\", \"{b}\"],\n"
 
 out += "];\n"
 
