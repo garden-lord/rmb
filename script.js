@@ -39,7 +39,20 @@ function get2Barks() {
 }
 let log = console.log;
 
-function setupButton(button, bark) {
+let leftListen = false;
+let rightListen = false;
+
+function enableButton() {
+  if (leftListen && rightListen) {
+    let buttons = document.querySelectorAll(".vote");
+    for (let button of buttons) {
+      button.disabled = false;
+      button.classList.add("vote-enabled");
+    }
+  }
+}
+
+function setupButton(button, bark, enableCallback) {
   button.querySelector("h2").innerText = bark.name + " bark";
   const audio = button.querySelector("audio");
   audio.appendChild(
@@ -65,18 +78,15 @@ function setupButton(button, bark) {
     dogDiv.children[1].hidden = true;
   });
 
-  function enableButton() {
-    button.querySelector(".vote").disabled = false;
-    button.querySelector(".vote").classList.add("vote-enabled");
-  }
-
   // Play audio when dog is clicked
   dogDiv.children[0].addEventListener("mouseup", () => {
     audio.play();
+    enableCallback();
     enableButton();
   });
   dogDiv.children[1].addEventListener("mouseup", () => {
     audio.play();
+    enableCallback();
     enableButton();
   });
 
@@ -89,6 +99,10 @@ function setupButton(button, bark) {
 document.addEventListener("DOMContentLoaded", () => {
   let a, b;
   [a, b] = get2Barks();
-  setupButton(document.getElementById("a"), a);
-  setupButton(document.getElementById("b"), b);
+  setupButton(document.getElementById("a"), a, () => {
+    leftListen = true;
+  });
+  setupButton(document.getElementById("b"), b, () => {
+    rightListen = true;
+  });
 });
