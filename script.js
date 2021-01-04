@@ -1,3 +1,7 @@
+// disable Firefox cache
+window.addEventListener('unload', function(){ log("a")});
+window.addEventListener('beforeunload', function(){ log("b")});
+
 const DB_HOST = window.location.href.startsWith("http://localhost")
   ? "http://localhost:5000"
   : // : "http://ratemybark1.herokuapp.com";
@@ -19,7 +23,7 @@ function vote(data) {
   const xhr = new XMLHttpRequest();
   xhr.open("POST", `${DB_HOST}/vote`, true);
   xhr.send(data);
-  window.location.reload();
+  window.location.href = window.location.href;
 }
 
 function fromHtml(html) {
